@@ -37,20 +37,8 @@ const updateFlag = (element) => {
 button.addEventListener("click", async (event) => {
     event.preventDefault();
 
-    const amountInput = document.querySelector("input");
-    const amount = amountInput.value;
+    const amount = document.querySelector("input").value;
     const alert = document.querySelector(".alert");
-    const container = document.querySelector(".container");
-    const sameContainer = document.querySelector(".same-container");
-
-    // Validate amount
-    if (amount === "" || amount < 1) {
-        alert.style.display = "block";
-        msg.innerText = "---";
-        return;
-    } else {
-        alert.style.display = "none";
-    }
 
     // Fetch and display conversion
     try {
@@ -63,6 +51,5 @@ button.addEventListener("click", async (event) => {
         msg.innerText = `${amount} ${fromCurrency.value} = ${finalAmount.toFixed(2)} ${toCurrency.value}`;
     } catch (error) {
         msg.innerText = "Something went wrong. Try again.";
-        console.error("Error fetching exchange rate:", error);
     }
 });
